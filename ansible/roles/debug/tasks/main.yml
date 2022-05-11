@@ -1,0 +1,5 @@
+---
+- name: Print hostvars to console
+  ansible.builtin.debug:
+    var: hostvars[inventory_hostname]
+  tags: ['report']

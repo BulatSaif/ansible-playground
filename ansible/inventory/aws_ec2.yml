@@ -1,0 +1,19 @@
+# https://docs.ansible.com/ansible/latest/collections/amazon/aws/aws_ec2_inventory.html
+plugin: aws_ec2
+regions:
+  - eu-north-1
+
+cache: true
+cache_timeout: 900 # 15 min
+cache_plugin: "jsonfile"
+cache_connection: '~/.ansible/tmp'
+hostnames:
+  - tag:Name
+keyed_groups:
+  - key: tags
+    prefix: tag
+groups:
+  cloud_aws: 'true'
+compose:
+  ansible_host: public_dns_name
+  tag_provider: "'aws'"
